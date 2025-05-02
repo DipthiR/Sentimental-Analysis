@@ -1,16 +1,2 @@
 ﻿# Sentiment Analysis Project
-from textblob import TextBlob
 
-while True:
-    comment = input("Enter the comment here (or type 'exit' to quit): ")
-    if comment.lower() == 'exit':
-        break
-
-    analysis = TextBlob(comment)
-
-    if analysis.sentiment.polarity > 0:
-        print("positive😊👍\nThank you For Your Comment")
-    elif analysis.sentiment.polarity == 0:
-        print("neutral😐")
-    else:
-        print("negative😞👎\nWe're sorry to hear that. 💔")
