@@ -1,15 +1,22 @@
 from textblob import TextBlob
 
-while True:
-    comment = input("Enter the comment here (or type 'exit' to quit): ")
-    if comment.lower() == 'exit':
-        break
-
+def analyze_comment(comment):
     analysis = TextBlob(comment)
+    polarity = analysis.sentiment.polarity
 
-    if analysis.sentiment.polarity > 0:
-        print("positive😊👍\nThank you For Your Comment")
-    elif analysis.sentiment.polarity == 0:
-        print("neutral😐")
+    print(f"\nComment: \"{comment}\"")
+    print(f"Polarity: {polarity:.2f}")
+    
+    if polarity > 0:
+        print("Sentiment: Positive 😊👍\nThank you For Your Comment")
+    elif polarity == 0:
+        print("Sentiment: Neutral 😐")
     else:
-        print("negative😞👎\nWe're sorry to hear that. 💔")
+        print("Sentiment: Negative 😞👎\nWe're sorry to hear that. 💔")
+
+# Main loop
+while True:
+    user_input = input("Enter the comment here (or type 'exit' to quit): ")
+    if user_input.lower() == 'exit':
+        break
+    analyze_comment(user_input)
